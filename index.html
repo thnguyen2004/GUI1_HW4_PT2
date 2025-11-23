@@ -1,0 +1,60 @@
+<!-- github username: thnguyen2004 -->
+<!-- Student email: Thomas_Nguyen3@student.uml.edu -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dynamic Multiplation Table</title>
+    <meta charset="utf-8">
+    <link href="css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Source for linking jquery: https://jqueryvalidation.org/ -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.21.0/dist/jquery.validate.min.js"></script>
+</head>
+<body>
+    <!-- Parent container styles -->
+    <div class="parent">
+        <!-- Source for forms: https://getbootstrap.com/docs/4.4/components/forms/ -->
+        <div class="col-md-12 col-lg-6">
+            <!-- Title -->
+            <h1>Please enter the table ranges</h1>
+            <!-- Form -->
+            <form id="range-form">
+                <!-- Minimum Column Value -->
+                <div class="form-group">
+                    <label for="minCol">Minimum Column Value (between -50 to 50)</label><br>
+                    <input type="number" id="minCol" name="minCol" value='1'><br>
+                </div>
+                <!-- Maximum Column Value -->
+                <div class="form-group">
+                    <label for="maxCol">Maximum Column Value (between -50 to 50)</label><br>
+                    <input type="number" id="maxCol" name="maxCol" value='10'><br>
+                </div>
+                <!-- Minimum Row Value -->
+                <div class="form-group">
+                    <label for="minRow">Minimum Row Value (between -50 to 50)</label><br>
+                    <input type="number" id="minRow" name="minRow" value='1'><br>
+                </div>
+                <!-- Maximum Row Value -->
+                <div class="form-group">
+                    <label for="maxRow">Maximum Row Value (between -50 to 50)</label><br>
+                    <input type="number" id="maxRow" name="maxRow" value='10'><br>
+                </div>
+                <!-- Submit Button -->
+                <button id="submit" type="submit" class="btn btn-primary">Regenerate Table</button>
+            </form>
+        </div>
+        <!-- Table container -->
+        <!-- Source for bootstrap tables: https://getbootstrap.com/docs/4.0/content/tables/ -->
+        <div class="table-container col-md-12 col-lg-6">
+            <table class="table">
+            </table>
+        </div>
+    </div>
+
+    <!-- Source for linking js: https://www.w3schools.com/js/js_whereto.asp -->
+    <script src="script.js"></script>
+</body>
+</html>

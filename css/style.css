@@ -1,0 +1,97 @@
+/* github username: thnguyen2004 */
+/* Student email: Thomas_Nguyen3@student.uml.edu */
+
+/* Page layout and base styles */
+body {
+    margin: 40px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+}
+
+/* Two-column responsive layout */
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* Label styles */
+label {
+    font-weight: 500;
+}
+
+/* Numeric input appearance */
+input[type="number"] {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Validation messages */
+label.error {
+    color: #c00;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* Table sizing and layout */
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: max-content;
+    min-width: 100%;
+}
+
+/* Shared cell styles */
+th, td {
+    width: 80px;
+    padding: 6px 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Header appearance */
+th {
+    background-color: #194676;
+    color: white;
+    font-weight: 500;
+}
+
+/* Even row background color */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Scrollable table viewport */
+.table-container {
+    overflow: auto;
+    max-height: 400px;
+    max-width: 100%;
+}
+
+/* Sticky header cells (position reference: https://www.w3schools.com/css/css_positioning.asp) */
+.header-cell {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Sticky first column */
+.vertical-header-cell {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+}
+
+/* Sticky corner: top-left intersection */
+.topLeft {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
