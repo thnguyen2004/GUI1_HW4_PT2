@@ -188,7 +188,7 @@ function initSlider(inputId) {
   // input -> slider
   $input.on("input", function () {
     let v = Number($input.val());
-    if (!isNaN(v)) {
+    if (!isNaN(v) && $("#range-form").valid()) {
       $slider.slider("value", v);
       generateTable(); // live update dynamic table
     }
