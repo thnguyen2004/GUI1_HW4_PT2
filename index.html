@@ -12,45 +12,68 @@
     <!-- Source for linking jquery: https://jqueryvalidation.org/ -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.21.0/dist/jquery.validate.min.js"></script>
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
     <!-- Parent container styles -->
     <div class="parent">
         <!-- Source for forms: https://getbootstrap.com/docs/4.4/components/forms/ -->
-        <div class="col-md-12 col-lg-6">
-            <!-- Title -->
-            <h1>Please enter the table ranges</h1>
-            <!-- Form -->
-            <form id="range-form">
-                <!-- Minimum Column Value -->
-                <div class="form-group">
-                    <label for="minCol">Minimum Column Value (between -50 to 50)</label><br>
-                    <input type="number" id="minCol" name="minCol" value='1'><br>
-                </div>
-                <!-- Maximum Column Value -->
-                <div class="form-group">
-                    <label for="maxCol">Maximum Column Value (between -50 to 50)</label><br>
-                    <input type="number" id="maxCol" name="maxCol" value='10'><br>
-                </div>
-                <!-- Minimum Row Value -->
-                <div class="form-group">
-                    <label for="minRow">Minimum Row Value (between -50 to 50)</label><br>
-                    <input type="number" id="minRow" name="minRow" value='1'><br>
-                </div>
-                <!-- Maximum Row Value -->
-                <div class="form-group">
-                    <label for="maxRow">Maximum Row Value (between -50 to 50)</label><br>
-                    <input type="number" id="maxRow" name="maxRow" value='10'><br>
-                </div>
-                <!-- Submit Button -->
-                <button id="submit" type="submit" class="btn btn-primary">Regenerate Table</button>
-            </form>
+        <div class="left">
+            <div class="col-12">
+                <!-- Title -->
+                <h1>Please enter the table ranges</h1>
+                <!-- Form -->
+                <form id="range-form">
+                    <!-- Minimum Column Value -->
+                    <div class="form-group">
+                        <label for="minCol">Minimum Column Value (between -50 to 50)</label>
+                        <input type="number" id="minCol" name="minCol" value="1">
+                        <div id="minCol-slider" class="ui-slider"></div>
+                    </div>
+                    <!-- Maximum Column Value -->
+                    <div class="form-group">
+                        <label for="maxCol">Maximum Column Value (between -50 to 50)</label>
+                        <input type="number" id="maxCol" name="maxCol" value="10">
+                        <div id="maxCol-slider" class="ui-slider"></div>
+                    </div>
+                    <!-- Minimum Row Value -->
+                    <div class="form-group">
+                        <label for="minRow">Minimum Row Value (between -50 to 50)</label>
+                        <input type="number" id="minRow" name="minRow" value="1">
+                        <div id="minRow-slider" class="ui-slider"></div>
+                    </div>
+                    <!-- Maximum Row Value -->
+                    <div class="form-group">
+                        <label for="maxRow">Maximum Row Value (between -50 to 50)</label>
+                        <input type="number" id="maxRow" name="maxRow" value="10">
+                        <div id="maxRow-slider" class="ui-slider"></div>
+                    </div>
+                    <!-- Submit Button -->
+                    <button id="submit" type="submit" class="btn btn-primary">Save Current Table</button>
+                </form>
+            </div>
+
+            <!-- dynamic table -->
+            <!-- Source for bootstrap tables: https://getbootstrap.com/docs/4.0/content/tables/ -->
+            <div class="table-container col-12">
+                <table class="table"></table>
+            </div>
         </div>
-        <!-- Table container -->
-        <!-- Source for bootstrap tables: https://getbootstrap.com/docs/4.0/content/tables/ -->
-        <div class="table-container col-md-12 col-lg-6">
-            <table class="table">
-            </table>
+        <div class="right">
+            <!-- saved tables tabs -->
+            <div id="tabs-container" class="tabs-wrapper col-12">
+                <h2>Saved Tables</h2>
+                <!-- Tabs structure -->
+                <div id="tabs">
+                    <ul id="tabs-list">
+                        <!-- tabs get inserted here -->
+                    </ul>
+                </div>
+                <!-- Tab deletion button -->
+                <button id="delete-selected" class="btn btn-danger" style="margin-top:10px;">Delete Selected Tabs</button>
+            </div>
         </div>
     </div>
 

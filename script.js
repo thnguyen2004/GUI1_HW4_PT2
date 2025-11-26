@@ -165,3 +165,97 @@ function generateTable(e) {
     table.appendChild(tbody);
     container.appendChild(table);
 }
+
+// 2-way bind slider
+function initSlider(inputId) {
+  const $input = $("#" + inputId);
+  const $slider = $("#" + inputId + "-slider");
+
+  // initialize jQuery UI slider
+  // Source: https://jqueryui.com/slider/
+  $slider.slider({
+    min: -50,
+    max: 50,
+    value: Number($input.val()),
+
+    // slider -> input
+    slide: function (e, ui) {
+      $input.val(ui.value).trigger("input");
+      generateTable(); // live update dynamic table
+    }
+  });
+
+  // input -> slider
+  $input.on("input", function () {
+    let v = Number($input.val());
+    if (!isNaN(v)) {
+      $slider.slider("value", v);
+      generateTable(); // live update dynamic table
+    }
+  });
+}
+
+// call for all 4 inputs
+$(function () {
+  initSlider("minCol");
+  initSlider("maxCol");
+  initSlider("minRow");
+  initSlider("maxRow");
+});
+
+// init tabs widget
+// Source: https://api.jqueryui.com/tabs/
+$("#tabs").tabs();
+let tabCounter = 1;
+
+// Save button handler
+$("#submit").off("click").on("click", function (e) {
+  e.preventDefault();
+
+  if (!$("#range-form").valid()) return;
+
+  // tab label from parameters
+  const minCol = $("#minCol").val();
+  const maxCol = $("#maxCol").val();
+  const minRow = $("#minRow").val();
+  const maxRow = $("#maxRow").val();
+
+  const tabId = "tab-" + tabCounter++;
+
+  // add new tab list item
+  $("#tabs-list").append(`
+    <li id="${tabId}-li">
+      <input type="checkbox" class="tab-checkbox" data-tab="${tabId}">
+      <a href="#${tabId}">${minCol} to ${maxCol} × ${minRow} to ${maxRow}</a>
+      <button class="close-tab delete-tab" data-tab="${tabId}">×</button>
+    </li>
+  `);
+
+  // add tab panel
+  $("#tabs").append(`
+    <div id="${tabId}">
+      <div class="saved-table">${document.querySelector(".table-container").innerHTML}</div>
+    </div>
+  `);
+
+  $("#tabs").tabs("refresh");
+  $("#tabs").tabs("option", "active", $("#tabs-list li").length - 1);
+});
+
+// delete one tab
+$(document).on("click", ".delete-tab", function () {
+  const id = $(this).data("tab");
+  $("#" + id + "-li").remove();
+  $("#" + id).remove();
+  $("#tabs").tabs("refresh");
+});
+
+// delete selected tabs
+$("#delete-selected").on("click", function () {
+  $(".tab-checkbox:checked").each(function () {
+    const id = $(this).data("tab");
+    $("#" + id + "-li").remove();
+    $("#" + id).remove();
+  });
+  $("#tabs").tabs("refresh");
+});

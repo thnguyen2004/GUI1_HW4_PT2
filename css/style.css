@@ -12,8 +12,10 @@ body {
 /* Two-column responsive layout */
 .parent {
     display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
+}
+
+.left, .right {
+    width: 50%;
 }
 
 /* Label styles */
@@ -94,4 +96,34 @@ tr:nth-child(even) {
     top: 0;
     left: 0;
     z-index: 4;
+}
+
+/* Make sliders sit nicely under each input */
+.ui-slider {
+    margin-top: 8px;
+    margin-bottom: 18px;
+}
+
+/* Tabs on right side */
+.tabs-wrapper {
+    margin-top: 20px;
+}
+
+/* Prevent right column from stretching downward */
+#tabs-container {
+    max-height: 300px;
+}
+
+/* Saved table display */
+.saved-table {
+    max-height: 400px;
+    max-width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+/* Checkbox spacing */
+.tab-checkbox {
+    margin-right: 6px;
 }
